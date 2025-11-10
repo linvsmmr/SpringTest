@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/lifecycle/test01")
 public class Test01Controller {
@@ -22,15 +25,16 @@ public class Test01Controller {
                 "</html>";
     }
 
-
+    @ResponseBody
     @RequestMapping("/2")
-    public Exam statusReponse() {
-        Exam korean = new Exam("국어", 80);
-        Exam math = new Exam("수학", 90);
-        Exam english = new Exam("영어", 85);
-        
-        return korean;
+    public Map<String,Integer> mapResponse() {
+        Map<String,Integer> scoreMap = new HashMap<>();
 
+        scoreMap.put("국어", 80);
+        scoreMap.put("수학", 90);
+        scoreMap.put("영어", 85);
+
+        return scoreMap;
     }
 
 
