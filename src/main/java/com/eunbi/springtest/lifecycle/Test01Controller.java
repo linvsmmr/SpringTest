@@ -28,12 +28,10 @@ public class Test01Controller {
         Exam korean = new Exam("국어", 80);
         Exam math = new Exam("수학", 90);
         Exam english = new Exam("영어", 85);
-        
+
         return korean;
 
     }
-
-
 
 
 }
