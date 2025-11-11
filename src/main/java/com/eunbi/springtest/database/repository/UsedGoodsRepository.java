@@ -12,5 +12,5 @@ public interface UsedGoodsRepository {
     // 구현 내용이 없는 메소드의 정의만 나열되는 곳
 
     // used_goods 모든 행 조회
-    public List<UsedGoods> selectUsedGoods();
+    public List<UsedGoods> selectUsedGoodsList();
 }
