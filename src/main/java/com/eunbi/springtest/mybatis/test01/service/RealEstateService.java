@@ -37,4 +37,8 @@ public class RealEstateService {
         int count = realEstateRepository.insertRealEstate2(realtorId);
         return count;
     }
+
+//    public updateRealeEstate() {
+//
+//    }
 }

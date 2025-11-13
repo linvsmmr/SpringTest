@@ -95,5 +95,14 @@
             )
     </insert>
 
+    <update id="updateRealEstate" parameterType="map">
+        UPDATE
+        `id`
+        ,`type`
+        ,`price`
+        FROM
+            `real_estate`
+    </update>
+
 
 </mapper>

@@ -14,4 +14,7 @@ public interface RealEstateRepository {
                                                          @Param("price") int price);
     public int insertRealEstate(RealEstate realEstate);
     public int insertRealEstate2(@Param("realtorId")int realtorId);
+    public List<RealEstate> updateRealEstate(@Param("id") int id,
+                            @Param("type") String type,
+                            @Param("price") int price);
 }

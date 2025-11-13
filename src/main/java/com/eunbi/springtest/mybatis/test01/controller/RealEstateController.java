@@ -72,6 +72,16 @@ public class RealEstateController {
     }
 
 
+//    @ResponseBody
+//    @RequestMapping("/modify")
+//    public modifyRealEstate() {
+
+
+//        int count = realEstateService.createRealEstate2);
+//        return count;
+//    }
+
+
 
 
 }
