@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Test01</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+    <h2>HOT 5</h2>
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>제목</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="hot, status:${musicRanking}">
+                <td th:text="${status.index + 1}">1</td>
+                <td th:text="${hot}">강남스타일</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
