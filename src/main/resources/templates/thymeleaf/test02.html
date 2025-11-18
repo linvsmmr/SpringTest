@@ -20,12 +20,19 @@
             <tr th:each="member:${membership}">
                 <td th:text="${member.name}">손오공</td>
                 <td th:text="${member.phoneNumber}">010010100011</td>
-                <td th:text="${member.grade}"
-                th:style="${member.grade == 'VIP'} ? 'color:red' : ''">브아피</td>
-                <td th:text="${member.point}">1287321</td>
+<!--                <td th:text="${member.grade}"-->
+<!--                th:style="${member.grade == 'VIP'} ? 'color:red' : ''">브아피</td>-->
+
+                <td th:if="${member.grade}"
+                    th:style="|${member.grade == 'VIP'
+                ? 'color:red'
+                : (member.grade == 'GOLD' ? 'color:gold' : '')}|">
+                    브아피
+                </td>
+                <td th:text="${member.point}"
+                th:style="${member.point >= 5000} ? 'color:blue' : ''">1287321</td>
             </tr>
         </tbody>
     </table>
-
 </body>
 </html>

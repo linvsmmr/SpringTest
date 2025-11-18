@@ -68,6 +68,8 @@ public class Hot5Controller {
         member.put("phoneNumber", "010-1111-2222");
         member.put("grade", "BASIC");
         member.put("point", 420);
+
+
         membership.add(member);
 
         model.addAttribute("membership", membership);
