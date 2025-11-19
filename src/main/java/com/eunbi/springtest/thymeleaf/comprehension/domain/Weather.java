@@ -3,6 +3,7 @@ package com.eunbi.springtest.thymeleaf.comprehension.domain;
 import java.time.LocalDateTime;
 
 public class Weather {
+    private int id;
     private LocalDateTime date;
     private String weather;
     private double temperatures;
@@ -11,6 +12,14 @@ public class Weather {
     private double windSpeed;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LocalDateTime getDate() {
         return date;

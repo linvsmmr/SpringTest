@@ -1,0 +1,21 @@
+#wrap{
+    width: 1200px;
+
+}
+
+.contents > .main-menu {
+    background-color: cornflowerblue;
+}
+
+.contents > .main-contents {
+}
+
+.input-label {
+    width: 110px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.footer {
+    height: 100px;
+}
