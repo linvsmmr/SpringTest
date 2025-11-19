@@ -1,4 +1,4 @@
-package com.eunbi.springtest.thymeleaf;
+package com.eunbi.springtest.thymeleaf.tests;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
