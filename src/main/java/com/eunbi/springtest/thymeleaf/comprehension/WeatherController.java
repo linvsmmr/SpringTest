@@ -28,6 +28,7 @@ public class WeatherController {
 
     @GetMapping("/02")
     public String weatherInput() {
+        
         return "thymeleaf/test04-1";
     }
 }
