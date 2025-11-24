@@ -2,6 +2,7 @@ package com.eunbi.springtest.ajax;
 
 import com.eunbi.springtest.ajax.domain.Favorites;
 import com.eunbi.springtest.ajax.service.FavoriteService;
+import com.eunbi.springtest.mybatis.test01.repository.RealEstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,8 @@ public class FavoriteController {
 
     @Autowired
     private FavoriteService favoriteService;
+    @Autowired
+    private RealEstateRepository realEstateRepository;
 
     @GetMapping("/list")
     public String favoriteList(Model model) {
@@ -57,5 +60,46 @@ public class FavoriteController {
 
         return "ajax/form";
     }
+
+    @ResponseBody
+    @PostMapping("/duplicate-url")
+    public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
+
+        Map<String, Boolean> resultMap = new HashMap<>();
+
+//        if (favoriteService.isDuplicateUrl(url)) {
+//            resultMap.put("isDuplicate", true);
+//        } else {
+//            resultMap.put("isDuplicate", false);
+//        }
+
+        resultMap.put("isDuplicate", favoriteService.isDuplicateUrl(url));
+
+        return resultMap;
+    }
+
+    // 특정한 하나의 즐겨찾기 삭제 API
+    @GetMapping("/remove")
+    public Map<String, String> removeFavorite(@RequestParam("id") int id) {
+        int count = favoriteService.deleteFavorite(id);
+
+        Map<String, String> resultMap = new HashMap<>();
+
+        if (count == 1) {
+            resultMap.put("result", "success");
+        } else {
+            resultMap.put("result", "fail");
+        }
+
+        return resultMap;
+    }
+
+
+
+
+
+
+
+
 
 }

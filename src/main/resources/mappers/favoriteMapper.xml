@@ -33,6 +33,23 @@
             )
     </insert>
 
+    <select id="countFavoriteUrl" parameterType="string"
+    resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            `favorite`
+        WHERE
+            `url` == #{url}
+    </select>
+
+    <delete id="deleteFavorite" parameterType="int">
+        DELETE FROM
+                   `favorite`
+        WHERE
+            `id` = #{id}
+    </delete>
+
 <!--<select id="countUserByEmail" parameterType="string"-->
 <!--        resultType="int">-->
 <!--    SELECT-->

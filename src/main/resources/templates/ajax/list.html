@@ -23,10 +23,35 @@
             <td th:text="${favorite.id}">219</td>
             <td th:text="${favorite.name}">유튜브</td>
             <td th:text="${favorite.url}">https://youtube.com</td>
+            <td><button type="button" class="btn btn-danger btn-sm remove-btn" th:data-favorite-id="${favorite.id}">삭제</button></td>
         </tr>
         </tbody>
     </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    $(".remove-btn").on("click", function () {
+        let id = $(this).data("favorite-id");
+
+        $.ajax({
+            type:"get"
+            , url:"/ajax/favorites/remove"
+            , data:{"id":id}
+            , success:function (response) {
+                if(response.result == "success") {
+                    location.reload();
+                } else {
+                    alert("삭제 실패!");
+                }
+            }
+            , error() {
+                alert("삭제에러")
+            }
+        })
+
+    })
+</script>
 
 </body>
 </html>

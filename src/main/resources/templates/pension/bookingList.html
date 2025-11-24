@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>예약 목록 보기</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/pension/css/style.css">
+</head>
+<body>
+<div id="wrap">
+    <header class="d-flex justify-content-center align-items-center">
+        <div class="display-4">통나무 펜션</div>
+    </header>
+    <nav class="main-menu">
+        <ul class="nav nav-fill font-weight-bold">
+            <li class="nav-item"><a href="#" class="nav-link text-white">펜션소개</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">객실보기</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">예약안내</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">커뮤니티</a></li>
+        </ul>
+    </nav>
+    <section class="contents">
+        <div class="mt-4 mb-4 text-center display-4 font-weight-bold">예약 목록 보기</div>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>예약날짜</th>
+                    <th>숙박일수</th>
+                    <th>숙박인원</th>
+                    <th>전화번호</th>
+                    <th>예약상태</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="booked:${bookingList}">
+                    <td th:text="${booked.name}">김인규</td>
+                    <td th:text="${booked.date}">2025년 12월 25일</td>
+                    <td th:text="${booked.day}">4</td>
+                    <td th:text="${booked.headAcount}">5</td>
+                    <td th:text="${booked.phoneNumber}">010-1234-567</td>
+                    <td th:text="${booked.state}">대기중</td>
+                    <td><button type="button" class="btn btn-danger">삭제</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+    <footer class="mt-3">
+        <div class="small text-secondary">
+            제주특별자치도 제주시 애월읍  <br>
+            사업자등록번호: 111-22-255222 / 농어촌민박사업자지정 / 대표:김통목 <br>
+            Copyright 2025 tongnamu All right reserved
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
