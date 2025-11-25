@@ -3,14 +3,19 @@ package com.eunbi.springtest.pension;
 import com.eunbi.springtest.ajax.domain.Favorites;
 import com.eunbi.springtest.pension.domain.Booking;
 import com.eunbi.springtest.pension.service.PensionService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/pension")
 @Controller
@@ -37,6 +42,32 @@ public class PensionController {
         model.addAttribute("bookingList", bookingList);
 
         return "pension/bookingList";
+    }
+
+
+    // 사이트 이름, 주소를 전달 받고, 저장하는 API
+    @ResponseBody
+    @GetMapping("/add")
+    public Map<String, String> addBookingList(
+            @RequestParam("name") String name
+            , @RequestParam("headCount") int headCount
+            , @RequestParam("day") int day
+            , @RequestParam("date") @DateTimeFormat(pattern = "yyyyMMdd") LocalDate date
+            , @RequestParam("phoneNumber") String phoneNumber) {
+
+        int count = pensionService.createBookedList(name,headCount,day,date,phoneNumber);
+
+        Map<String, String> resultMap = new HashMap<>();
+        // 성공 : {"result":"success"}
+        // 실패 : {"result":"fail"}
+
+        if(count == 1) {
+            resultMap.put("result", "success");
+        } else {
+            resultMap.put("result", "fail");
+        }
+
+        return resultMap;
     }
 
 }

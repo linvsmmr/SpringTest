@@ -1,5 +1,6 @@
 package com.eunbi.springtest.pension.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Booking {
@@ -7,7 +8,7 @@ public class Booking {
     private String name;
     private int headCount;
     private int day;
-    private LocalDateTime date;
+    private LocalDate date;
     private String phoneNumber;
     private String state;
     private LocalDateTime createdAt;
@@ -45,11 +46,11 @@ public class Booking {
         this.day = day;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -20,4 +20,24 @@
         FROM
             `booking`
     </select>
+
+    <insert id="insertBookingList" parameterType="map">
+        INSERT INTO
+        `booking`
+        (
+         `name`
+        ,`headcount`
+        ,`day`
+        ,`date`
+        ,`phone_number`
+        )
+        VALUE
+        (
+            #{name},
+            #{headCount},
+            #{day},
+            #{date},
+            #{phoneNumber}
+        )
+    </insert>
 </mapper>

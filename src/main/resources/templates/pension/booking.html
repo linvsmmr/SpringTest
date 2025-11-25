@@ -82,8 +82,8 @@
 
         $.ajax({
             type: "get"
-            , url: "/pension/booking"
-            , data: {"name": name, "date": date, "day": day, "headcount": headcount, "phoneNumber": phoneNumber}
+            , url: "/pension/add"
+            , data: {"name": name, "date": date, "day": day, "headCount": headcount, "phoneNumber": phoneNumber}
             , success: function () {
                 alert("추가 완료")
             }
