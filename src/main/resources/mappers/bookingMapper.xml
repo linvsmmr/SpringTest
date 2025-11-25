@@ -11,8 +11,13 @@
             `id`
         ,`name`
         ,`headcount`
-        ,``
-
-
+        ,`day`
+        ,`date`
+        ,`phone_number`
+        , `state`
+        ,`created_at`
+        ,`updated_at`
+        FROM
+            `booking`
     </select>
 </mapper>

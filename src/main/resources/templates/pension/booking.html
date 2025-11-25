@@ -23,12 +23,12 @@
     <section class="contents">
         <h3 class="mt-4 mb-4 text-center">예약 하기</h3>
         <div class="book-menu">
-            <label>이름</label><input type="text" class="form-control">
-            <label>예약날짜</label><input type="text" class="form-control">
-            <label>숙박일수</label><input type="text" class="form-control">
-            <label>숙박인원</label><input type="text" class="form-control">
-            <label>전화번호</label><input type="text" class="form-control">
-            <button type="button" class="btn btn-warning text-center mt-4 btn-block">예약하기</button>
+            <label>이름</label><input type="text" class="form-control" id="nameInput">
+            <label>예약날짜</label><input type="text" class="form-control" id="dateInput">
+            <label>숙박일수</label><input type="text" class="form-control" id="dayInput">
+            <label>숙박인원</label><input type="text" class="form-control" id="headcountInput">
+            <label>전화번호</label><input type="text" class="form-control" id="phoneNumberInput">
+            <button type="button" id="bookingBtn" class="btn btn-warning text-center mt-4 btn-block">예약하기</button>
         </div>
 
 
@@ -41,5 +41,59 @@
         </div>
     </footer>
 </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+
+
+    $("#bookingBtn").on("click", function() {
+        let name = $("#nameInput").val();
+        let date = $("#dateInput").val();
+        let day = $("#dayInput").val();
+        let headcount = $("#headcountInput").val();
+        let phoneNumber = $("#phoneNumberInput").val();
+
+        if (name == "") {
+            alert("이름을 입력하세요");
+            return;
+        }
+
+        if (date == "") {
+            alert("예약일자를 입력하세요");
+            return;
+        }
+
+        if (day == "") {
+            alert("숙박일수를 입력하세요");
+            return;
+        }
+
+        if (headcount == "") {
+            alert("숙박인원을 입력하세요");
+            return;
+        }
+
+        if (phoneNumber == "") {
+            alert("전화번호를 입력하세요");
+            return;
+        }
+
+        $.ajax({
+            type: "get"
+            , url: "/pension/booking"
+            , data: {"name": name, "date": date, "day": day, "headcount": headcount, "phoneNumber": phoneNumber}
+            , success: function () {
+                alert("추가 완료")
+            }
+            , error: function () {
+                alert("추가 에러")
+            }
+        })
+    });
+
+
+</script>
 </body>
 </html>

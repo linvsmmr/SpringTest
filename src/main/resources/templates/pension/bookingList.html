@@ -37,11 +37,14 @@
             <tbody>
                 <tr th:each="booked:${bookingList}">
                     <td th:text="${booked.name}">김인규</td>
-                    <td th:text="${booked.date}">2025년 12월 25일</td>
+                    <td th:text="${#temporals.format(booked.date, 'yyyy년 M월 d일')}">2025년 12월 25일</td>
                     <td th:text="${booked.day}">4</td>
-                    <td th:text="${booked.headAcount}">5</td>
+                    <td th:text="${booked.headCount}">5</td>
                     <td th:text="${booked.phoneNumber}">010-1234-567</td>
-                    <td th:text="${booked.state}">대기중</td>
+                    <td>
+                        <span th:if="${#strings.startsWith(booked.state, '대기중')}" th:text="${booked.state}" class="text-info"></span>
+                        <span th:if="${#strings.startsWith(booked.state, '확정')}" th:text="${booked.state}" class="text-success"></span>
+                    </td>
                     <td><button type="button" class="btn btn-danger">삭제</button></td>
                 </tr>
             </tbody>
