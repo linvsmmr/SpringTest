@@ -26,7 +26,7 @@
             <thead>
                 <tr>
                     <th>이름</th>
-                    <th>예약날짜</th>
+                    <th>예약날짜</th>s
                     <th>숙박일수</th>
                     <th>숙박인원</th>
                     <th>전화번호</th>
@@ -45,7 +45,7 @@
                         <span th:if="${#strings.startsWith(booked.state, '대기중')}" th:text="${booked.state}" class="text-info"></span>
                         <span th:if="${#strings.startsWith(booked.state, '확정')}" th:text="${booked.state}" class="text-success"></span>
                     </td>
-                    <td><button type="button" class="btn btn-danger">삭제</button></td>
+                    <td><button type="button" th:data-booked-id="${booked.id}" class="btn btn-danger deleteBtn">삭제</button></td>
                 </tr>
             </tbody>
         </table>
@@ -59,6 +59,36 @@
         </div>
     </footer>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    $(".deleteBtn").on("click", function() {
+
+        let id = $(this).data("booked-id");
+
+        $.ajax({
+            type:"get"
+            , url:"/pension/remove"
+            , data:{"id":id}
+            , success:function(response) {
+                // {"result":"success"}
+                // {"result":"fail"}
+                if(response.result == "success") {
+                    location.reload();
+                } else {
+                    alert("삭제 실패");
+                }
+
+            }
+            , error:function() {
+                alert("에러 발생");
+            }
+
+        });
+
+
+    });
+</script>
 
 </body>
 </html>

@@ -70,4 +70,25 @@ public class PensionController {
         return resultMap;
     }
 
+
+    @ResponseBody
+    @GetMapping("/remove")
+    public Map<String, String> deleteBooking(@RequestParam("id") int id) {
+
+        int count = pensionService.deleteBooking(id);
+
+        Map<String, String> resultMap = new HashMap<>();
+        // {"result":"success"}
+        // {"result":"fail"}
+
+        if(count == 1) {
+            resultMap.put("result", "success");
+        } else {
+            resultMap.put("result", "fail");
+        }
+
+        return resultMap;
+
+    }
+
 }

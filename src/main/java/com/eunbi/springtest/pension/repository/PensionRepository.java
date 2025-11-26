@@ -21,4 +21,8 @@ public interface PensionRepository {
             , @RequestParam("date") LocalDate date
             , @RequestParam("phoneNumber") String phoneNumber);
 
+
+    public int deleteBooking(@Param("id") int id);
+
+
 }

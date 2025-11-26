@@ -30,4 +30,12 @@ public class PensionService {
     }
 
 
+    public int deleteBooking(int id) {
+
+        int count = pensionRepository.deleteBooking(id);
+
+        return count;
+    }
+
+
 }
