@@ -53,9 +53,10 @@ public class PensionController {
             , @RequestParam("headCount") int headCount
             , @RequestParam("day") int day
             , @RequestParam("date") @DateTimeFormat(pattern = "yyyyMMdd") LocalDate date
-            , @RequestParam("phoneNumber") String phoneNumber) {
+            , @RequestParam("phoneNumber") String phoneNumber
+            , @RequestParam("state") String state) {
 
-        int count = pensionService.createBookedList(name,headCount,day,date,phoneNumber);
+        int count = pensionService.createBookedList(name,headCount,day,date,phoneNumber,state);
 
         Map<String, String> resultMap = new HashMap<>();
         // 성공 : {"result":"success"}
@@ -87,6 +88,27 @@ public class PensionController {
             resultMap.put("result", "fail");
         }
 
+        return resultMap;
+
+    }
+
+
+    @ResponseBody
+    @GetMapping("/search")
+    public Map<String, Object> searchBooking(
+            @RequestParam("name") String name
+            , @RequestParam("phoneNumber") String phoneNumber) {
+
+        Booking booking = pensionService.getBooking(name, phoneNumber);
+
+        Map<String, Object> resultMap = new HashMap<>();
+
+        if(booking != null) {
+            resultMap.put("result", "success");
+            resultMap.put("booking", booking);
+        } else {
+            resultMap.put("result", "fail");
+        }
         return resultMap;
 
     }

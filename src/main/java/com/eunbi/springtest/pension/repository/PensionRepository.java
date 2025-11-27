@@ -15,14 +15,19 @@ public interface PensionRepository {
     public List<Booking> bookedList();
 
     public int insertBookingList(
-            @RequestParam("name") String name
-            , @RequestParam("headCount") int headCount
-            , @RequestParam("day") int day
-            , @RequestParam("date") LocalDate date
-            , @RequestParam("phoneNumber") String phoneNumber);
+            @Param("name") String name
+            , @Param("headCount") int headCount
+            , @Param("day") int day
+            , @Param("date") LocalDate date
+            , @Param("phoneNumber") String phoneNumber
+            , @Param("state") String state);
 
 
     public int deleteBooking(@Param("id") int id);
+
+    public Booking selectBooking(
+            @Param("name") String name
+            , @Param("phoneNumber") String phoneNumber);
 
 
 }

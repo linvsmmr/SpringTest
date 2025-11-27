@@ -30,6 +30,7 @@
         ,`day`
         ,`date`
         ,`phone_number`
+        , `state`
         )
         VALUE
         (
@@ -37,7 +38,8 @@
             #{headCount},
             #{day},
             #{date},
-            #{phoneNumber}
+            #{phoneNumber},
+            '대기중'
         )
     </insert>
 
@@ -47,6 +49,26 @@
         WHERE
             `id` = #{id}
     </delete>
+
+
+    <select id="selectBooking" parameterType="map"
+            resultType="com.eunbi.springtest.pension.domain.Booking">
+        SELECT
+            `id`
+             , `name`
+             , `headcount`
+             , `day`
+             , `date`
+             , `phone_number`
+             , `state`
+             , `created_at`
+             , `updated_at`
+        FROM
+            `booking`
+        WHERE
+            `name` = #{name}
+          AND `phone_number` = #{phoneNumber}
+    </select>
 
 
 </mapper>

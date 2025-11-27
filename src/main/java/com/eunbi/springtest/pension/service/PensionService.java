@@ -24,8 +24,8 @@ public class PensionService {
         return bookingList;
     }
 
-    public int createBookedList(String name, int headCount, int day, LocalDate date, String phoneNumber) {
-        int count = pensionRepository.insertBookingList(name,headCount,day,date,phoneNumber);
+    public int createBookedList(String name, int headCount, int day, LocalDate date, String phoneNumber, String state) {
+        int count = pensionRepository.insertBookingList(name,headCount,day,date,phoneNumber, state);
         return count;
     }
 
@@ -35,6 +35,25 @@ public class PensionService {
         int count = pensionRepository.deleteBooking(id);
 
         return count;
+    }
+
+    public int createBooking(
+            String name
+            , int headcount
+            , int day
+            , LocalDate date
+            , String phoneNumber) {
+
+        int count = pensionRepository.insertBookingList(name, headcount, day, date, phoneNumber, "대기중");
+
+        return count;
+    }
+
+    public Booking getBooking(String name, String phoneNumber) {
+
+        Booking booking = pensionRepository.selectBooking(name, phoneNumber);
+
+        return booking;
     }
 
 
