@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/jpa/student")
@@ -13,6 +16,11 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+    // 경고: 절대 컨트롤러에서 레퍼지토리 객체를 활용하지 않는다.
+    // 다만 코드 작성 편의를 위해 임시로 활용
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @GetMapping("/lombok")
     @ResponseBody
@@ -57,6 +65,32 @@ public class StudentController {
 
         return "삭제 성공";
     }
+
+
+    @ResponseBody
+    @GetMapping("/find")
+    public List<Student>  findStudent() {
+        // 모든 행 조회
+
+        List<Student> studentList = null;
+//        studentRepository.findAll();
+//        studentList = studentRepository.findByName("김인규");
+//        studentList = studentRepository.findBtOrderByIdDesc();
+//        studentList = studentRepository.findTop2ByNameOrderByIdDesc("김인규");
+
+        List<String> nameList = new ArrayList<>();
+
+        nameList.add("유재석");
+        nameList.add("김인규");
+
+//        studentList = studentRepository.findByNameIn(nameList);
+        studentList = studentRepository.selectByDreamJob("강사");
+
+
+        return studentList;
+    }
+
+
 
 
 

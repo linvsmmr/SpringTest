@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/jpa/company")
 public class CompanyController {
 
     @Autowired
     private CompanyService companyService;
+
+    @Autowired
+    private CompanyRepository companyRepository;
 
 
     @ResponseBody
@@ -46,6 +51,8 @@ public class CompanyController {
 
         return "수행 완료";
     }
+
+
 
 
 
